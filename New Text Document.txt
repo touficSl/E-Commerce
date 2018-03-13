@@ -1,0 +1,84 @@
+For Each row As DataRow In dt.Rows
+                                Dim forcast As Integer = 0
+                                If row("MonthSFD") IsNot Nothing Then
+                                    Dim month As Integer = row("MonthSFD")
+                                    If row("ForcastSFD").ToString <> "" Then
+                                        forcast = row("ForcastSFD")
+                                    End If
+                                    If month = 1 Then
+                                        If forcast <> 0 Then
+                                            txtJANF.Text = forcast
+                                        Else
+                                            txtJANF.Text = ""
+                                        End If
+                                    ElseIf month = 2 Then
+                                        If forcast <> 0 Then
+                                            txtFEBF.Text = forcast
+                                        Else
+                                            txtFEBF.Text = ""
+                                        End If
+                                    ElseIf month = 3 Then
+                                        If forcast <> 0 Then
+                                            txtMARF.Text = forcast
+                                        Else
+                                            txtMARF.Text = ""
+                                        End If
+                                    ElseIf month = 4 Then
+                                        If forcast <> 0 Then
+                                            txtAPRF.Text = forcast
+                                        Else
+                                            txtAPRF.Text = ""
+                                        End If
+                                    ElseIf month = 5 Then
+                                        If forcast <> 0 Then
+                                            txtMAYF.Text = forcast
+                                        Else
+                                            txtMAYF.Text = ""
+                                        End If
+                                    ElseIf month = 6 Then
+                                        If forcast <> 0 Then
+                                            txtJUNF.Text = forcast
+                                        Else
+                                            txtJUNF.Text = ""
+                                        End If
+                                    ElseIf month = 7 Then
+                                        If forcast <> 0 Then
+                                            txtJULF.Text = forcast
+                                        Else
+                                            txtJULF.Text = ""
+                                        End If
+                                    ElseIf month = 8 Then
+                                        If forcast <> 0 Then
+                                            txtAUGF.Text = forcast
+                                        Else
+                                            txtAUGF.Text = ""
+                                        End If
+                                    ElseIf month = 9 Then
+                                        If forcast <> 0 Then
+                                            txtSEPF.Text = forcast
+                                        Else
+                                            txtSEPF.Text = ""
+                                        End If
+                                    ElseIf month = 10 Then
+                                        If forcast <> 0 Then
+                                            txtOCTF.Text = forcast
+                                        Else
+                                            txtOCTF.Text = ""
+                                        End If
+                                    ElseIf month = 11 Then
+                                        If forcast <> 0 Then
+                                            txtNOVF.Text = forcast
+                                        Else
+                                            txtNOVF.Text = ""
+                                        End If
+                                    ElseIf month = 12 Then
+                                        If forcast <> 0 Then
+                                            txtDECF.Text = forcast
+                                        Else
+                                            txtDECF.Text = ""
+                                        End If
+                                    End If
+                                    Dim price As Integer = dr("PriceItem")
+                                    total = total + price * forcast
+                                End If
+                            Next

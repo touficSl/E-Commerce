@@ -1,0 +1,205 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Main.master.cs" Inherits="Main" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        body {
+            font: 0.8em/1.5 "arial",sans-serif;
+            color: #303030;
+            background: white;
+        }
+
+        a, a:hover {
+            outline: none;
+            text-decoration: underline;
+            color: #CC0000;
+        }
+
+            a:hover {
+                text-decoration: none;
+            }
+
+        ul {
+            margin: 2px 0 22px 17px;
+        }
+
+            ul li {
+                list-style-type: circle;
+                margin: 0 0 6px 0;
+                padding: 0 0 4px 5px;
+            }
+
+            ul#menu, ul#menu li {
+                float: left;
+                margin: 0;
+                padding: 0;
+            }
+
+                ul#menu li {
+                    list-style: none;
+            width: 255px;
+        }
+
+                    ul#menu li a {
+                        letter-spacing: 0.1em;
+                        font: normal 60% 'lucida sans unicode', arial, sans-serif;
+                        display: block;
+                        height: 80px;
+                        padding: 29px 26px 6px 26px;
+                        text-align: center;
+                        color: #FFF;
+                        text-transform: uppercase;
+                        text-decoration: none;
+                        background: #0099CC;
+            width: 253px;
+            direction: rtl;
+            margin-right: 0px;
+        }
+
+                        ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover {
+                            color: #FFF;
+                            background: #006699 repeat-x;
+                        }
+
+                    ul#menu li ul#sub_nav {
+                        /*border:1px solid red;*/
+                        position: absolute;
+                        top: 71px;
+                        width: 170px;
+                        margin: 0;
+                        display: none;
+                        background: #0099CC;
+                    }
+
+                    ul#menu li:hover #sub_nav {
+                        display: block;
+                    }
+        .style2
+        {
+            width: 317px;
+        }
+        .style1
+        {
+            width: 475px;
+        }
+        </style>
+    <script src="Scripts/jquery-1.7.1.js"></script>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="background-image: url('Images/simpim.jpg')" >
+    <form id="form1" runat="server">
+
+            <div style="display: block">
+                <div id="menubar" onload="focus">
+                    <p>
+    <table style="width:89%; height: 151px;">
+        <tr>
+            <td class="style2">
+                        <asp:ImageButton ID="ImageButton5" runat="server" Height="194px" 
+                            ImageUrl="~/Images/basket.jpg" PostBackUrl="~/Home.aspx" Width="215px" />
+                    </td>
+            <td class="style1">
+                &nbsp;</td>
+            <td>
+                <div style="height: 142px; display: block; font-size: x-large; width: 674px;">
+                    <table id="login" runat="server" 
+                        style="float: right; width: 308px; height: 181px; font-size: x-large;">
+                        <tr>
+                            <td style="font-size: medium">
+                                <asp:Label ID="lblusr" runat="server" Font-Size="Large" ForeColor="#0033CC" 
+                                    Text="User Name : "></asp:Label>
+                            </td>
+                            <td style="font-size: medium">
+                                <asp:TextBox ID="txtUsername" runat="server" BorderColor="#3399FF" 
+                                    BorderStyle="Solid" Font-Size="Medium" ReadOnly="false" TextMode="SingleLine" 
+                                    Width="130px" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: medium">
+                                <asp:Label ID="lblpswd" runat="server" Font-Size="Large" ForeColor="#0033CC" 
+                                    Text="Password   : "></asp:Label>
+                            </td>
+                            <td style="font-size: medium">  
+                                <asp:TextBox ID="txtpass" runat="server" TextMode="Password" Width="130px" Font-Size="Medium"
+                                 BorderStyle="Solid" BorderColor="#3399FF" ReadOnly="false"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: medium">
+                                <asp:Image ID="Image1" runat="server" Height="98px" 
+                                    ImageUrl="Images/LoginRed.jpg" Width="121px" />
+                            </td>
+                            <td style="font-size: medium">
+                                <asp:Button ID="RegisterButton" runat="server" Font-Size="Medium" 
+                                    ForeColor="#0099CC"  Text="Register" OnClick="NavigateToRegistre" 
+                                    Width="72px" Height="33px" />
+                                <asp:Button ID="LoginButton" runat="server" Font-Size="Medium" 
+                                    ForeColor="#0099CC"  Text="Log In" Width="72px" Height="33px" OnClick="Login" />
+                                <br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: medium">
+                        <asp:HyperLink ID="HyperLinkAdmin" runat="server" 
+                            NavigateUrl="~/SignAdmin.aspx">Administrator</asp:HyperLink>
+                            </td>
+                            <td style="font-size: medium">
+                                <asp:Label ID="errorlabel" runat="server" Visible="False" 
+                                    Width="130px" Font-Size="X-Small" ForeColor="Red"></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="logout" runat="server" 
+                        style="float: right; height: 204px; width: 330px;" visible="false">
+                        <asp:Label ID="welcomeclient" runat="server" Font-Size="X-Large"></asp:Label>
+                        <br />
+                        <asp:ImageButton ID="BasketImageButton" runat="server" AlternateText="Basket" 
+                            Height="91px" ImageUrl="~/Images/basketim.png" 
+                             Width="85px" PostBackUrl="~/Basket.aspx" />
+                        <asp:ImageButton ID="ImageButton4" runat="server" AlternateText="My Orders" 
+                            Height="96px" ImageUrl="Images/order.png"   
+                            style="direction: ltr" Width="105px" PostBackUrl="~/Orders.aspx" />
+                        <br />
+                        <asp:LinkButton ID="LogoutLinkButton" runat="server" OnClick="Logout">Logout</asp:LinkButton>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <br />
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </table>
+                    </p>
+                    <ul id="menu" style="font-size: xx-large; width: 1100px;">
+                        <li id="home"><a href="Home.aspx">Home</a></li>
+                        <li id="category"><a href="Category.aspx">Category</a></li>
+                        <li id="about"><a href="AboutUs.aspx">About Us</a></li>
+                        <li id="contact"><a href="ContactUs.aspx">Contact Us</a></li>
+                    </ul>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </div>
+            </div>
+        <div style="width: 1291px; margin: auto; display: block; padding-top: 10px; height: 108px;">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <p>
+                    &nbsp;</p>
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
+
