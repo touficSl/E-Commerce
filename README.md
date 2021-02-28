@@ -1,4 +1,4 @@
-# E-Commerce
+# ECommerce
 
 ## Introduction
 - Ecommerce C# project for beginners
